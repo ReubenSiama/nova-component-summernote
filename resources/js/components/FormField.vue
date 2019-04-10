@@ -59,6 +59,7 @@ export default {
 
     uploadImage(image) {
       var data = new FormData();
+      var id = this.field.attribute;
       data.append("image", image);
       $.ajaxSetup({
         headers: {
@@ -74,7 +75,7 @@ export default {
         type: "post",
         success: function(res) {
           var image = $("<img>").attr("src", res);
-          $("#page").summernote("insertNode", image[0]);
+          $("#" + id).summernote("insertNode", image[0]);
         },
         error: function(data) {
           console.log(this.data);
